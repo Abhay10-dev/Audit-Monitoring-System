@@ -1,0 +1,72 @@
+# ========================
+# Node.js / Next.js
+# ========================
+Docs/
+node_modules/
+.next/
+out/
+build/
+dist/
+.npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ========================
+# Python / ML Service
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+*.egg-info/
+dist/
+build/
+*.pkl
+*.joblib
+.pytest_cache/
+.mypy_cache/
+
+# ========================
+# Environment Variables
+# ========================
+.env*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# ========================
+# IDE & OS
+# ========================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ========================
+# Logs
+# ========================
+logs/
+*.log
+
+# ========================
+# Misc
+# ========================
+.vercel
+.turbo
+coverage/
+*.tsbuildinfo
