@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { query } = require('../db/db');
-const { requireAuth, requireManager, requireAdmin } = require('../middlewares/auth.middleware');
+const { requireAuth } = require('../middlewares/auth.middleware');
+const { requireManager, requireAdmin } = require('../middlewares/rbac.middleware');
 
 /**
  * GET /api/alerts

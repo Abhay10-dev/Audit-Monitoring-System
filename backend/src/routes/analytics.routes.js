@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { query } = require('../db/db');
-const { requireAuth, requireAdmin } = require('../middlewares/auth.middleware');
+const { requireAuth } = require('../middlewares/auth.middleware');
+const { requireAdmin } = require('../middlewares/rbac.middleware');
 const { Parser } = require('json2csv');
 const PDFDocument = require('pdfkit');
 
