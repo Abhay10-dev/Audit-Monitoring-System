@@ -18,12 +18,17 @@ router.post('/login', loginLimiter, requireAuth, async (req, res) => {
     let userQuery = await query('SELECT * FROM users WHERE firebase_uid = $1', [firebase_uid]);
     let user = userQuery.rows[0];
 
-    // 2. If not, create them (auto-assigned 'employee' role by DB default)
+    // 2. If not, create them
     if (!user) {
+      // Check if this is the first user in the system
+      const countResult = await query('SELECT COUNT(*) FROM users');
+      const isFirstUser = parseInt(countResult.rows[0].count) === 0;
+      const initialRole = isFirstUser ? 'admin' : 'employee';
+
       const insertQuery = await query(
-        `INSERT INTO users (firebase_uid, email, display_name) 
-         VALUES ($1, $2, $3) RETURNING *`,
-        [firebase_uid, email, displayName || null]
+        `INSERT INTO users (firebase_uid, email, display_name, role) 
+         VALUES ($1, $2, $3, $4) RETURNING *`,
+        [firebase_uid, email, displayName || null, initialRole]
       );
       user = insertQuery.rows[0];
     }
