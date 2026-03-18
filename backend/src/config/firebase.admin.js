@@ -8,11 +8,14 @@ if (!admin.apps.length) {
     credential: admin.credential.cert({
       projectId:   process.env.FIREBASE_PROJECT_ID,
       clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      // Handle surrounding quotes, spaces, and escaped newlines robustly
+      projectId:   process.env.FIREBASE_PROJECT_ID,
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      // Aggressively clean the private key (removes quotes, backslashes, and junk before the header)
       privateKey:  process.env.FIREBASE_PRIVATE_KEY
+        ?.replace(/\\n/g, '\n') // Convert literal \n to real newlines
         ?.trim()
-        ?.replace(/^["']|["']$/g, '') // Remove leading/trailing quotes
-        ?.replace(/\\n/g, '\n'),      // Replace literal \n with actual newlines
+        ?.replace(/^[^A-Za-z0-9\-]+/, '') // Remove any leading junk (quotes, backslashes)
+        ?.replace(/["']+$/, ''),          // Remove trailing quotes
     }),
   });
 }
