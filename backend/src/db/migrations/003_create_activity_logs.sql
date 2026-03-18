@@ -19,7 +19,3 @@ CREATE INDEX IF NOT EXISTS idx_activity_logs_timestamp ON activity_logs(timestam
 CREATE INDEX IF NOT EXISTS idx_activity_logs_activity_type ON activity_logs(activity_type);
 CREATE INDEX IF NOT EXISTS idx_activity_logs_session_id ON activity_logs(session_id);
 
--- Partial index for recent logs (last 90 days optimization)
-CREATE INDEX IF NOT EXISTS idx_activity_logs_recent 
-  ON activity_logs(timestamp) 
-  WHERE timestamp > NOW() - INTERVAL '90 days';
