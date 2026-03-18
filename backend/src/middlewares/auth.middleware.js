@@ -45,7 +45,10 @@ const requireAuth = async (req, res, next) => {
     next();
   } catch (error) {
     console.error('Firebase Auth Error:', error.message);
-    return res.status(401).json({ error: 'Unauthorized: Invalid or expired token' });
+    return res.status(401).json({ 
+      error: 'Unauthorized', 
+      detail: error.message 
+    });
   }
 };
 
