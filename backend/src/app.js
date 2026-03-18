@@ -39,7 +39,9 @@ app.use('/api/activity',  require('./routes/activity.routes'));
 app.use('/api/risk', captureApiActivity('api_call', 'Risk module interaction'), require('./routes/risk.routes'));
 app.use('/api/alerts', captureApiActivity('api_call', 'Alerts module interaction'), require('./routes/alerts.routes'));
 app.use('/api/admin', captureApiActivity('api_call', 'Admin module interaction'), require('./routes/admin.routes'));
+app.use('/api/manager', captureApiActivity('api_call', 'Manager module interaction'), require('./routes/manager.routes'));
 app.use('/api/analytics', captureApiActivity('api_call', 'Analytics view interaction'), require('./routes/analytics.routes'));
+app.use('/api/profile',  require('./routes/profile.routes'));
 
 // ── 404 Fallback ──────────────────────────────────────
 app.use((req, res) => {

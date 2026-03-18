@@ -17,7 +17,7 @@ const requireAuth = async (req, res, next) => {
     
     // Fetch user details from our DB to get their role and internal ID
     const { rows } = await query(
-      'SELECT id, role, is_active FROM users WHERE firebase_uid = $1',
+      'SELECT id, role, is_active, is_blocked FROM users WHERE firebase_uid = $1',
       [decodedToken.uid]
     );
 
@@ -32,6 +32,10 @@ const requireAuth = async (req, res, next) => {
 
     if (!dbUser.is_active) {
       return res.status(403).json({ error: 'Account is disabled' });
+    }
+
+    if (dbUser.is_blocked) {
+      return res.status(403).json({ error: 'Account suspended. Contact your administrator.' });
     }
 
     // Attach full user context to request

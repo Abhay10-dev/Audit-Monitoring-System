@@ -11,18 +11,22 @@ import {
   Users,
   BrainCircuit,
   ShieldAlert,
+  UserCircle,
+  UsersRound,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "/admin",    label: "Dashboard",     icon: LayoutDashboard, roles: ["admin"] },
-  { href: "/manager",  label: "Dashboard",     icon: LayoutDashboard, roles: ["manager"] },
-  { href: "/employee", label: "Dashboard",     icon: LayoutDashboard, roles: ["employee"] },
-  { href: "/alerts",   label: "Alerts",        icon: BellRing,        roles: ["admin", "manager", "employee"] },
-  { href: "/activity-logs", label: "Activity Logs", icon: ListChecks, roles: ["admin", "manager", "employee"] },
-  { href: "/ml-insights", label: "ML Insights", icon: BrainCircuit,  roles: ["admin"] },
-  { href: "/users",    label: "Users",         icon: Users,           roles: ["admin"] },
-  { href: "/settings", label: "Settings",      icon: Settings,        roles: ["admin", "manager", "employee"] },
+  { href: "/admin",             label: "Dashboard",     icon: LayoutDashboard, roles: ["admin"] },
+  { href: "/manager",           label: "Dashboard",     icon: LayoutDashboard, roles: ["manager"] },
+  { href: "/employee",          label: "Dashboard",     icon: LayoutDashboard, roles: ["employee"] },
+  { href: "/alerts",            label: "Alerts",        icon: BellRing,        roles: ["admin", "manager", "employee"] },
+  { href: "/activity-logs",     label: "Activity Logs", icon: ListChecks,      roles: ["admin", "manager", "employee"] },
+  { href: "/ml-insights",       label: "ML Insights",   icon: BrainCircuit,    roles: ["admin"] },
+  { href: "/admin/users",       label: "Manage Users",  icon: Users,           roles: ["admin"] },
+  { href: "/manager/employees", label: "My Employees",  icon: UsersRound,      roles: ["manager"] },
+  { href: "/settings",          label: "Settings",      icon: Settings,        roles: ["admin", "manager", "employee"] },
+  { href: "/profile",           label: "My Profile",    icon: UserCircle,      roles: ["admin", "manager", "employee"] },
 ];
 
 export function Sidebar() {
@@ -73,7 +77,7 @@ export function Sidebar() {
 
       {/* Footer */}
       <div className="border-t border-slate-800 px-4 py-3">
-        <p className="text-xs text-slate-600 text-center">AMS v1.0 · Phase 8</p>
+        <p className="text-xs text-slate-600 text-center">AMS v1.0 · Phase 13</p>
       </div>
     </aside>
   );
